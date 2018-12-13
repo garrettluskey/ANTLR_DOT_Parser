@@ -1,22 +1,38 @@
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
 import java.nio.charset.*;
+import java.io.FileInputStream;
 import java.io.IOException;
-import DOTLexer;
-import DOTParser;
 public class main {
 	public static void main(String[] args) {
-        // Prints "Hello, World" to the terminal window.
-        System.out.println("Hello, World");
-        String content = readFile("test.txt", StandardCharsets.UTF_8);
-        DOTLexer l = new DOTLexer(content)
-        DOTParser p = new DOTParser(l.getTokenNames())
+        CharStream s;
+		try {
+			s = CharStreams.fromFileName("C:\\Users\\My\\eclipse-workspace\\ANTLR_DOT_Parser\\src/test.txt");
+			DOTLexer l = new DOTLexer(s);
+	        CommonTokenStream cts = new CommonTokenStream(l);
+	        DOTParser p = new DOTParser(cts);
+	        ParseTree tree = p.graph(); // parse the content and get the tree
+	        
+	        System.out.print(p.graph().getText());
+	        
+	        Mylistener listener = new Mylistener();
+
+	        ParseTreeWalker walker = new ParseTreeWalker();
+	        walker.walk(listener, tree);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
+        
+
         System.out.println("Hello, World");
     }
-	static String readFile(String path, Charset encoding) 
-			  throws IOException 
-			{
-			  byte[] encoded = Files.readAllBytes(Paths.get(path));
-			  return new String(encoded, encoding);
-			}
 }
