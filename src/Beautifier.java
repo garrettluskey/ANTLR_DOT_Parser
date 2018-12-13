@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-public class Mylistener implements DOTListener {
+public class Beautifier implements DOTListener {
 	
 		private int tabs = 0;
         public void enterEveryRule(ParserRuleContext ctx) {

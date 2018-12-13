@@ -22,7 +22,7 @@ public class main {
 	        
 	        System.out.print(p.graph().getText());
 	        
-	        Mylistener listener = new Mylistener();
+	        Beautifier listener = new Beautifier();
 
 	        ParseTreeWalker walker = new ParseTreeWalker();
 	        walker.walk(listener, tree);
