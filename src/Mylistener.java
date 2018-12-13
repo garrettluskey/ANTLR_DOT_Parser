@@ -1,3 +1,8 @@
+// This is the listener class for program 5.
+// This class works with the parser to beautify
+// any input DOT code.
+// Author:: Garrett Luskey
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -46,7 +51,8 @@ public class Mylistener implements DOTListener {
 		@Override
 		public void enterEdge_stmt(DOTParser.Edge_stmtContext ctx) {
 			// TODO Auto-generated method stub
-			
+			printTabs();
+			System.out.print(ctx.node_id().getText());
 		}
 
 		@Override
@@ -71,6 +77,7 @@ public class Mylistener implements DOTListener {
 		public void enterA_list(DOTParser.A_listContext ctx) {
 			// TODO Auto-generated method stub
 			
+			System.out.print(ctx.getText().replace("=", " = ").replace(",", ", "));
 		}
 
 		@Override
@@ -82,19 +89,18 @@ public class Mylistener implements DOTListener {
 		@Override
 		public void enterAttr_list(DOTParser.Attr_listContext ctx) {
 			// TODO Auto-generated method stub
-			
+			System.out.print(" [");
 		}
 
 		@Override
 		public void exitAttr_list(DOTParser.Attr_listContext ctx) {
 			// TODO Auto-generated method stub
-			
+			System.out.print("];");
 		}
 
 		@Override
 		public void enterAttr_stmt(DOTParser.Attr_stmtContext ctx) {
 			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
@@ -106,7 +112,7 @@ public class Mylistener implements DOTListener {
 		@Override
 		public void enterEdgeRHS(DOTParser.EdgeRHSContext ctx) {
 			// TODO Auto-generated method stub
-			
+			System.out.print(" -> " + ctx.node_id().get(0).getText());
 		}
 
 		@Override
@@ -123,7 +129,6 @@ public class Mylistener implements DOTListener {
 		@Override
 		public void exitEdgeop(DOTParser.EdgeopContext ctx) {
 			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
@@ -188,6 +193,7 @@ public class Mylistener implements DOTListener {
 		@Override
 		public void exitStmt(DOTParser.StmtContext ctx) {
 			// TODO Auto-generated method stub
+			System.out.print("\n");
 		}
 
 		@Override
