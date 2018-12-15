@@ -57,8 +57,8 @@ public class Beautifier implements DOTListener {
 
 		@Override
 		public void exitEdge_stmt(DOTParser.Edge_stmtContext ctx) {
-			// TODO Auto-generated method stub
-			System.out.print(";\n");
+			System.out.print(";");
+			
 		}
 
 		@Override
@@ -118,6 +118,7 @@ public class Beautifier implements DOTListener {
 		@Override
 		public void exitEdgeRHS(DOTParser.EdgeRHSContext ctx) {
 			// TODO Auto-generated method stub
+			
 		}
 
 		@Override
@@ -146,7 +147,13 @@ public class Beautifier implements DOTListener {
 		public void enterSubgraph(DOTParser.SubgraphContext ctx) {
 			// TODO Auto-generated method stub
 			printTabs();
-			System.out.print("subgraph " + ctx.id().getText() + " {\n");
+			
+			 try{
+				 System.out.print("subgraph " + ctx.id().getText() + " {\n");
+			 }catch(NullPointerException e) {
+				System.out.println("Error Trying To enter Subgraph");
+			 }
+			
 		}
 
 		@Override
@@ -185,13 +192,20 @@ public class Beautifier implements DOTListener {
 
 		@Override
 		public void enterStmt(DOTParser.StmtContext ctx) {
-			// TODO Auto-generated method stub
+			if(ctx.getChildCount() == 3) {
+				printTabs();
+				System.out.print(ctx.id().get(0).getText());
+				System.out.print(" = ");
+				System.out.print(ctx.id().get(1).getText());
+				System.out.print("; ");
+			}
 			
 		}
 
 		@Override
 		public void exitStmt(DOTParser.StmtContext ctx) {
 			// TODO Auto-generated method stub
+			System.out.print("\n");
 		}
 
 		@Override

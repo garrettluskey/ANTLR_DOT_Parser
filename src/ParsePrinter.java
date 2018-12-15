@@ -28,13 +28,12 @@ public class ParsePrinter implements DOTListener {
 
 	@Override
 	public void visitTerminal(TerminalNode arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void enterNode_stmt(DOTParser.Node_stmtContext ctx) {
-		System.out.println("Start recognizing a node");
+
 		// TODO Auto-generated method stub
 		// System.out.println(ctx.getText());
 
@@ -42,62 +41,70 @@ public class ParsePrinter implements DOTListener {
 
 	@Override
 	public void exitNode_stmt(DOTParser.Node_stmtContext ctx) {
-		System.out.println("Finish recognizing a node");
 
 	}
 
 	@Override
 	public void enterEdge_stmt(DOTParser.Edge_stmtContext ctx) {
-		System.out.println("Start recognizing an edge");
-
+		System.out.println("Start recognizing an edge statement");
 	}
 
 	@Override
 	public void exitEdge_stmt(DOTParser.Edge_stmtContext ctx) {
-		System.out.println("Finish recognizing an edge");
+		System.out.println("Finish recognizing an edge statement");
 
 	}
 
 	@Override
 	public void enterGraph(DOTParser.GraphContext ctx) {
-		System.out.println("Start recognizing a graph");
+
+		
+			System.out.println("Start recognizing a digraph.");
+			System.out.println("Start recognizing a cluster");
+
 	}
 
 	@Override
 	public void exitGraph(DOTParser.GraphContext ctx) {
-		System.out.println("Finish recognizing a graph");
+		System.out.println("Finish recognizing a cluster");
+		System.out.println("Finish recognizing a digraph");
 	}
 
 	@Override
 	public void enterA_list(DOTParser.A_listContext ctx) {
-		System.out.println("Start recognizing a list");
+		
+		for(int i = 0; i < ctx.getText().length() - ctx.getText().replace("=", "").length();i++) {
+			System.out.println("Start recognizing a property");
+			System.out.println("Finish recognizing a property");
+		}
+		
+	
 
 	}
 
 	@Override
 	public void exitA_list(DOTParser.A_listContext ctx) {
-		System.out.println("Finish recognizing a list");
-
+		
+	
 	}
 
 	@Override
 	public void enterAttr_list(DOTParser.Attr_listContext ctx) {
-		System.out.println("Start recognizing an attribute list");
+
 	}
 
 	@Override
 	public void exitAttr_list(DOTParser.Attr_listContext ctx) {
-		System.out.println("Finish recognizing an attribute list");
+
 	}
 
 	@Override
 	public void enterAttr_stmt(DOTParser.Attr_stmtContext ctx) {
-		System.out.println("Start recognizing an attribute statment");
+
 	}
 
 	@Override
 	public void exitAttr_stmt(DOTParser.Attr_stmtContext ctx) {
-		System.out.println("Finish recognizing an attribute statment");
 
 	}
 
@@ -124,71 +131,72 @@ public class ParsePrinter implements DOTListener {
 
 	@Override
 	public void enterPort(DOTParser.PortContext ctx) {
-		System.out.println("Start recognizing a port");
 
 	}
 
 	@Override
 	public void exitPort(DOTParser.PortContext ctx) {
-		System.out.println("Finish recognizing a port");
 
 	}
 
 	@Override
 	public void enterSubgraph(DOTParser.SubgraphContext ctx) {
 		System.out.println("Start recognizing a subgraph");
+		System.out.println("Start recognizing a cluster");
 	}
 
 	@Override
 	public void exitSubgraph(DOTParser.SubgraphContext ctx) {
+		System.out.println("Finish recognizing a cluster");
 		System.out.println("Finish recognizing a subgraph");
+		
 	}
 
 	@Override
 	public void enterStmt_list(DOTParser.Stmt_listContext ctx) {
-		System.out.println("Start recognizing a statment list");
 
 	}
 
 	@Override
 	public void exitStmt_list(DOTParser.Stmt_listContext ctx) {
-		// TODO Auto-generated method stub
 
-		System.out.println("Finish recognizing a statment list");
 	}
 
 	@Override
 	public void enterId(DOTParser.IdContext ctx) {
-		System.out.println("Start recognizing an Id");
 
 	}
 
 	@Override
 	public void exitId(DOTParser.IdContext ctx) {
-		System.out.println("Finish recognizing an Id");
+
 
 	}
 
 	@Override
 	public void enterStmt(DOTParser.StmtContext ctx) {
-		System.out.println("Start recognizing a statement");
+			if(ctx.getChildCount() == 3) {
+				System.out.println("Start recognizing property");
+				System.out.println("Finish recognizing property");
+			}
+			
 
 	}
 
 	@Override
 	public void exitStmt(DOTParser.StmtContext ctx) {
-		System.out.println("Finish recognizing a statement");
+		
 	}
 
 	@Override
 	public void enterNode_id(DOTParser.Node_idContext ctx) {
-		System.out.println("Start recognizing a node Id");
+
 
 	}
 
 	@Override
 	public void exitNode_id(DOTParser.Node_idContext ctx) {
-		System.out.println("Finish recognizing a node Id");
+
 
 	}
 
