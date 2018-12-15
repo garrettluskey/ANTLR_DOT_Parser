@@ -58,7 +58,7 @@ public class Beautifier implements DOTListener {
 		@Override
 		public void exitEdge_stmt(DOTParser.Edge_stmtContext ctx) {
 			// TODO Auto-generated method stub
-			
+			System.out.print(";\n");
 		}
 
 		@Override
@@ -95,7 +95,7 @@ public class Beautifier implements DOTListener {
 		@Override
 		public void exitAttr_list(DOTParser.Attr_listContext ctx) {
 			// TODO Auto-generated method stub
-			System.out.print("];");
+			System.out.print("]");
 		}
 
 		@Override
@@ -118,7 +118,6 @@ public class Beautifier implements DOTListener {
 		@Override
 		public void exitEdgeRHS(DOTParser.EdgeRHSContext ctx) {
 			// TODO Auto-generated method stub
-			
 		}
 
 		@Override
@@ -193,7 +192,6 @@ public class Beautifier implements DOTListener {
 		@Override
 		public void exitStmt(DOTParser.StmtContext ctx) {
 			// TODO Auto-generated method stub
-			System.out.print("\n");
 		}
 
 		@Override

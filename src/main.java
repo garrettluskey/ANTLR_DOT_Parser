@@ -10,7 +10,7 @@ public class main {
 	public static void main(String[] args) {
 		CharStream s;
 		try {
-			s = CharStreams.fromFileName("src\\test.txt");
+			s = CharStreams.fromFileName("src\\test4.txt");
 			DOTLexer l = new DOTLexer(s);
 			CommonTokenStream cts = new CommonTokenStream(l);
 			DOTParser p = new DOTParser(cts);
